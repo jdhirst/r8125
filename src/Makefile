@@ -132,6 +132,7 @@ ifneq ($(KERNELRELEASE),)
 		EXTRA_CFLAGS += -DENABLE_RX_PACKET_FRAGMENT
 	endif
 else
+	KVER = $(KERNEL_VERSION)
 	BASEDIR := /lib/modules/$(KVER)
 	KERNELDIR ?= $(BASEDIR)/build
 	PWD :=$(shell pwd)
@@ -147,7 +148,6 @@ else
 	KERNEL_GCC_VERSION := $(shell cat /proc/version | sed -n 's/.*gcc version \([[:digit:]]\.[[:digit:]]\.[[:digit:]]\).*/\1/p')
 	CCVERSION = $(shell $(CC) -dumpversion)
 
-	KVER = $(KVER)
 	KMAJ = $(shell echo $(KVER) | \
 	sed -e 's/^\([0-9][0-9]*\)\.[0-9][0-9]*\.[0-9][0-9]*.*/\1/')
 	KMIN = $(shell echo $(KVER) | \
