@@ -132,7 +132,7 @@ ifneq ($(KERNELRELEASE),)
 		EXTRA_CFLAGS += -DENABLE_RX_PACKET_FRAGMENT
 	endif
 else
-	KVER = $(KERNEL_VERSION)
+	KVER = $(shell uname -r)
 	BASEDIR := /lib/modules/$(KVER)
 	KERNELDIR ?= $(BASEDIR)/build
 	PWD :=$(shell pwd)
